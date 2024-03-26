@@ -1,4 +1,5 @@
 import MintPage from "./pages/MintPage";
+import ListPage from "./pages/ListPage";
 import {
   ConnectionProvider,
   WalletProvider,
@@ -17,6 +18,7 @@ function App() {
         <WalletModalProvider>
           <h1>3Dchan</h1>
           <div>人工知能を備えたNFTクリエイター</div>
+          <ListPage></ListPage>
           <MintPage></MintPage>
         </WalletModalProvider>
       </WalletProvider>

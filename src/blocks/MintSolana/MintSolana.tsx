@@ -1,12 +1,24 @@
 import { useWallet } from "@solana/wallet-adapter-react";
 import SolanaWalletButton from "../../elements/SolanaWalletButton/SolanaWalletButton";
-import { TOKEN_PROGRAM_ID } from '@solana/spl-token';
-import { clusterApiUrl, Connection, SystemProgram, Keypair, TransactionMessage, VersionedTransaction } from '@solana/web3.js';
 import { useState } from "react";
+import { Connection, clusterApiUrl } from "@solana/web3.js";
+// import { Metaplex, walletAdapterIdentity } from "@metaplex-foundation/js";
 
-const MintSolana = () => {
 
-    const { publicKey, sendTransaction, connected, signTransaction } = useWallet();
+interface MintSolanaProps {
+
+    ipfsUrl: string;
+
+}
+
+const MintSolana = ({ ipfsUrl }: MintSolanaProps) => {
+
+    const wallet = useWallet();
+    const connection = new Connection(clusterApiUrl('devnet'));
+    //const metaplex = new Metaplex(connection).use(walletAdapterIdentity(wallet));
+
+
+    const { publicKey, connected, signTransaction } = useWallet();
     const [error, setError] = useState('');
 
     const createMintAddress = async () => {
@@ -14,6 +26,16 @@ const MintSolana = () => {
         if (!connected || !publicKey || !signTransaction) {
             console.log('Wallet is not connected');
             return;
+        }
+
+        /* try {
+           const { nft } = await metaplex.nfts().create({
+                uri: ipfsUrl,
+                // Additional minting options here
+            }).run();
+            console.log("NFT Minted:", nft);
+        } catch (error) {
+            console.error("Failed to mint NFT:", error);
         }
 
         const connection = new Connection(clusterApiUrl(import.meta.env.VITE_SOL_NET), 'confirmed');
@@ -54,7 +76,7 @@ const MintSolana = () => {
         } catch (error: any) {
             setError(error);
             console.error(error);
-        };
+        };*/
     };
 
 

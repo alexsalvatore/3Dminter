@@ -2,8 +2,6 @@
 import { generateRandomNumber } from '.';
 import fontGoth from '../assets/fonts/ManuskriptGotisch.ttf';
 import fontText from '../assets/fonts/IMFeENsc28P.ttf';
-// import fontGothPixel from '../assets/fonts/GothicPixels.ttf';
-// import fontHandPixel from '../assets/fonts/rose.ttf';
 
 export const addText = (
     ctx: CanvasRenderingContext2D,
@@ -75,7 +73,7 @@ export const copyPasteRectangle = (ctx: CanvasRenderingContext2D, amplitude: num
 
         // Paste the copied part
         ctx.putImageData(imageData, finalX, finalY);
-    } catch { (e: any) => console.error(e) };
+    } catch (e: any) { console.error(e) };
 
 }
 

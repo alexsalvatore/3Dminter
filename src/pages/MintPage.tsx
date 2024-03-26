@@ -5,12 +5,13 @@ import glitch from "glitch-canvas";
 import ImagePrompt from "../blocks/ImagePrompt/ImagePrompt";
 import { getLocalstorageImageSaved, setLocalstorageImageSaved } from "../api/localstorage-api";
 import UploadToIpfs from "../blocks/Upload2Ipfs/UploadToIpfs";
-import MintSolana from "../blocks/MintSolana/MintSolana";
+// import MintSolana from "../blocks/MintSolana/MintSolana";
 
 const MintPage = () => {
 
     const [coverDataUrl, setCoverDataUrl] = useState(getLocalstorageImageSaved());
     const [glitchedDataUrl, setGlitchedDataUrl] = useState('');
+    const [ipfsUrl, setIpfsUrl] = useState('');
     const [finalDataUrl, setFinalDataUrl] = useState('');
     const [text, setText] = useState('@Alex');
     const [iterations, setIterations] = useState(20);
@@ -59,6 +60,7 @@ const MintPage = () => {
     }
 
     return <>
+        <h2>AI art generator</h2>
         {coverDataUrl && <div>
             <img alt="preview" width={150} src={coverDataUrl} />
         </div>}
@@ -92,9 +94,9 @@ const MintPage = () => {
             {finalDataUrl && <><UploadToIpfs
                 imageDataUrl={finalDataUrl}
                 fileName="test-3dchan"
-                onIPFShash={(hash) => console.log("hash", hash)}
+                onIPFShash={(link) => setIpfsUrl(link)}
             ></UploadToIpfs>
-                <MintSolana></MintSolana>
+                {/*<MintSolana ipfsUrl={ipfsUrl}></MintSolana>*/}
             </>}
         </>}
     </>;

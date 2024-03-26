@@ -9,7 +9,7 @@ import IpfsLink from "../../elements/IpfsLink/IpfsLink";
 interface UploadToIpfsProps {
     imageDataUrl: string;
     fileName: string;
-    onIPFShash: (hash: string) => void;
+    onIPFShash: (link: string) => void;
 }
 
 const UploadToIpfs = ({ imageDataUrl, fileName, onIPFShash }: UploadToIpfsProps) => {
@@ -21,7 +21,7 @@ const UploadToIpfs = ({ imageDataUrl, fileName, onIPFShash }: UploadToIpfsProps)
 
     useEffect(() => {
         if (ipfsHash) {
-            onIPFShash(ipfsHash);
+            onIPFShash(`https://amethyst-sleepy-penguin-958.mypinata.cloud/ipfs/${ipfsHash}`);
             setLocalstorageIPFSHash(ipfsHash);
         }
     }, [ipfsHash])
