@@ -5,8 +5,7 @@ export default function Home() {
     <>
       <div>Hello 3Dchan!</div>
       <div>
-        <Link href="/nfts">List NFTs</Link> |
-        <Link href="/paint">Create NFTs</Link>
+        <Link href="/nfts">List NFTs</Link> | <Link href="/paint">Create NFTs</Link>
       </div>
     </>
   );

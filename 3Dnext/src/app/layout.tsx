@@ -20,7 +20,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <div>
           <h1>
-            <Link href="/">3Dchan</Link></h1>
+            <Link href="/">3Dchan</Link>
+          </h1>
           <p>人工知能を備えたNFTクリエイター</p>
         </div>
         <main>{children}</main>
