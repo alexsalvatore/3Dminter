@@ -24,7 +24,7 @@ const ListPage = () => {
         try {
             // This is a simplified example. Depending on your use case, you might need additional filters or parameters.
             const ownedNFTs = await solanaConnection.getParsedTokenAccountsByOwner(publicKeyToFetch, {
-                programId: new PublicKey('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA'),
+                programId: new PublicKey("31fgM5ZVkDkwwYCWHKXKFWbw2aDXjDpYgj7pjGU46Uhk"),
             });
             console.log("ownedNFTs: ", ownedNFTs);
             for (const nft of ownedNFTs.value) {
