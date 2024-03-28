@@ -1,6 +1,6 @@
-export type getNftsResponse = NftItem[];
+export type getNftsListResponse = NftData[];
 
-interface NftItem {
+export interface NftData {
     associatedTokenAddress: string;
     mint: string;
     name: string;
