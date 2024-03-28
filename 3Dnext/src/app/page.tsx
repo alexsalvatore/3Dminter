@@ -2,6 +2,8 @@
 
 import { useWallet } from '@solana/wallet-adapter-react';
 import Link from 'next/link';
+// Default styles that can be overridden by your app
+require('@solana/wallet-adapter-react-ui/styles.css');
 
 const Home = () => {
 

@@ -2,7 +2,7 @@
 
 import { DynamicWalletButton, DynamicWalletDisconnectButton } from "@/app/components/DynamicWalletButton";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
-import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
+import { ConnectionProvider, WalletProvider, useWallet } from "@solana/wallet-adapter-react";
 import { WalletModalProvider, } from "@solana/wallet-adapter-react-ui";
 import { UnsafeBurnerWalletAdapter } from "@solana/wallet-adapter-wallets";
 import { clusterApiUrl } from "@solana/web3.js";
@@ -16,6 +16,7 @@ interface WalletProviderProps {
 const WalletContext = ({ children }: WalletProviderProps) => {
     const network = WalletAdapterNetwork.Mainnet;
     const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+    const { publicKey } = useWallet();
     const wallets = useMemo(() =>
         [new UnsafeBurnerWalletAdapter()]
         , [network]);
@@ -23,8 +24,10 @@ const WalletContext = ({ children }: WalletProviderProps) => {
     return (<ConnectionProvider endpoint={endpoint}>
         <WalletProvider wallets={wallets} autoConnect>
             <WalletModalProvider>
-                <DynamicWalletButton></DynamicWalletButton>
-                <DynamicWalletDisconnectButton></DynamicWalletDisconnectButton>
+                {publicKey ?
+                    <DynamicWalletDisconnectButton></DynamicWalletDisconnectButton> :
+                    <DynamicWalletButton></DynamicWalletButton>
+                }
                 {children}
             </WalletModalProvider>
         </WalletProvider>
