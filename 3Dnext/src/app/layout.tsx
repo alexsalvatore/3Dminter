@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from 'next/link';
+import WalletContext from "@/context/WalletContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +25,11 @@ export default function RootLayout({
           </h1>
           <p>人工知能を備えたNFTクリエイター</p>
         </div>
-        <main>{children}</main>
+        <div>
+          <WalletContext>
+            {children}
+          </WalletContext>
+        </div>
       </body>
     </html >
   );

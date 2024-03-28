@@ -1,8 +1,15 @@
+'use client';
+
+import { useWallet } from '@solana/wallet-adapter-react';
 import Link from 'next/link';
 
-export default function Home() {
+const Home = () => {
+
+  const { publicKey } = useWallet();
+
   return (
     <>
+      <div>{publicKey?.toBase58()}</div>
       <div>Hello 3Dchan!</div>
       <div>
         <Link href="/nfts">List NFTs</Link> | <Link href="/paint">Create NFTs</Link>
@@ -10,3 +17,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Home;
